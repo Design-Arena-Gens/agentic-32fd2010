@@ -1,0 +1,339 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0a0d12;
+  --fg: #f2f5f9;
+  --accent: #21d0b2;
+  --accent-dark: #1aa690;
+  --card: rgba(16, 22, 33, 0.86);
+  --glow: rgba(33, 208, 178, 0.35);
+  --outline: rgba(255, 255, 255, 0.05);
+  --font-heading: 'Rajdhani', sans-serif;
+  --font-body: 'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: radial-gradient(circle at top, #161d2d 0%, #05070c 60%);
+  color: var(--fg);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  position: relative;
+  padding: 8rem 1.75rem 6rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(33, 208, 178, 0.25) 0%, transparent 60%),
+    linear-gradient(135deg, rgba(63, 106, 255, 0.22), transparent);
+  filter: blur(0px);
+  z-index: -2;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 10% 20% auto;
+  height: 45%;
+  background: radial-gradient(circle, rgba(33, 208, 178, 0.25), transparent 60%);
+  transform: rotate(8deg);
+  z-index: -1;
+}
+
+.hero h1 {
+  font-size: clamp(2.75rem, 5vw, 4rem);
+  margin: 0 0 1rem;
+  font-family: var(--font-heading);
+  letter-spacing: 0.15rem;
+}
+
+.hero p {
+  margin: 0 auto 2rem;
+  max-width: 650px;
+  font-size: 1.125rem;
+  opacity: 0.85;
+}
+
+.hero__cta {
+  display: inline-block;
+  padding: 0.9rem 2.8rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #031310;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 25px rgba(33, 208, 178, 0.25);
+}
+
+.hero__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(33, 208, 178, 0.35);
+}
+
+main {
+  flex: 1;
+  padding: 0 1.75rem 4rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.75rem;
+  max-width: 1100px;
+  margin: -4rem auto 0;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--outline);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 24px 40px rgba(5, 9, 16, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(130deg, rgba(33, 208, 178, 0.07), transparent 65%);
+  pointer-events: none;
+}
+
+.card h2,
+.card h3 {
+  font-family: var(--font-heading);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.card--wide {
+  grid-column: 1 / -1;
+}
+
+.badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.badge {
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(33, 208, 178, 0.25);
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.checklist li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.steps {
+  counter-reset: step;
+  padding-left: 1rem;
+}
+
+.steps li {
+  counter-increment: step;
+  margin-bottom: 0.85rem;
+}
+
+.steps li::marker {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.tips {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tips li {
+  margin-bottom: 0.75rem;
+  padding-left: 1.1rem;
+  border-left: 2px solid rgba(33, 208, 178, 0.3);
+}
+
+.footer {
+  padding: 2rem 1.75rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.58);
+  border-top: 1px solid var(--outline);
+  background: rgba(4, 7, 12, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.simulator {
+  margin-top: 1.5rem;
+  border: 1px solid rgba(33, 208, 178, 0.25);
+  border-radius: 14px;
+  padding: 1.5rem;
+  background: rgba(6, 10, 18, 0.8);
+  display: grid;
+  gap: 1.5rem;
+}
+
+.inputs {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.toggle {
+  display: grid;
+  place-items: center;
+  width: 110px;
+  height: 110px;
+  border-radius: 20px;
+  background: rgba(16, 24, 36, 0.85);
+  border: 1px solid rgba(33, 208, 178, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.toggle:hover {
+  transform: translateY(-3px);
+  border-color: rgba(33, 208, 178, 0.5);
+}
+
+.toggle.active {
+  border-color: rgba(33, 208, 178, 0.85);
+  box-shadow: 0 0 20px var(--glow);
+}
+
+.toggle span {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  letter-spacing: 0.1em;
+}
+
+.truth-table {
+  border-collapse: collapse;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(33, 208, 178, 0.25);
+}
+
+.truth-table th,
+.truth-table td {
+  padding: 0.75rem 1rem;
+  text-align: center;
+}
+
+.truth-table thead {
+  background: rgba(33, 208, 178, 0.15);
+}
+
+.truth-table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.truth-table tbody tr.active {
+  background: rgba(33, 208, 178, 0.18);
+  color: #031310;
+  font-weight: 600;
+}
+
+.leds {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+
+.led {
+  display: grid;
+  justify-items: center;
+  gap: 0.45rem;
+}
+
+.led__bulb {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  transition: box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.led__bulb::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: opacity 0.2s ease;
+}
+
+.led__bulb.on {
+  background: radial-gradient(circle, rgba(33, 208, 178, 0.85), rgba(4, 33, 33, 0.6));
+  box-shadow: 0 0 18px rgba(33, 208, 178, 0.55);
+  border-color: rgba(33, 208, 178, 0.65);
+}
+
+.led__bulb.on::after {
+  opacity: 0.25;
+}
+
+.led__label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding-top: 6rem;
+  }
+
+  .inputs {
+    flex-wrap: wrap;
+  }
+
+  .toggle {
+    width: 90px;
+    height: 90px;
+  }
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proteus 8 Logic Circuit Guide</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1>Proteus 8 Logic Circuit Builder</h1>
+        <p>
+          Follow the hands-on guide to assemble AND and OR gate circuits in
+          Proteus 8, validate their truth tables, and understand their real-world
+          wiring.
+        </p>
+        <a class="hero__cta" href="#guide">Start Building</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="grid" id="guide">
+        <article class="card card--wide">
+          <h2>Project Overview</h2>
+          <p>
+            You will build a Proteus 8 project with digital switches feeding both
+            AND and OR logic gates, driving LED indicators. The design uses
+            standard TTL components, and the guide below walks through the
+            schematic layout, wiring, and simulation steps.
+          </p>
+          <div class="badge-group">
+            <span class="badge">Proteus 8.12+</span>
+            <span class="badge">TTL Logic</span>
+            <span class="badge">Beginner Friendly</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Required Components</h3>
+          <ul class="checklist">
+            <li>2× Digital Switch (from <em>Virtual Instruments</em>)</li>
+            <li>1× Logic AND Gate (e.g., 74LS08)</li>
+            <li>1× Logic OR Gate (e.g., 74LS32)</li>
+            <li>2× LEDs (choose contrasting colors)</li>
+            <li>2× 330&Omega; resistors (current limiting)</li>
+            <li>1× Ground terminal</li>
+            <li>1× +5V Power rail</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Proteus Schematic Layout</h3>
+          <ol class="steps">
+            <li>Open Proteus and start a new <strong>Schematic Capture</strong> project.</li>
+            <li>Select components above via <strong>P</strong> (Pick Devices).</li>
+            <li>Place the AND gate and OR gate horizontally with space for wiring.</li>
+            <li>Add two switches on the left, label them <strong>A</strong> and <strong>B</strong>.</li>
+            <li>Wire switches to both gate inputs using tidy, right-angle tracks.</li>
+            <li>Attach LED + resistor pairs to the output of each gate.</li>
+            <li>Connect LED cathodes to GND and feed their anodes through resistors.</li>
+            <li>Bind both switches to +5V via pull-up wiring and defaults set to <strong>OFF</strong>.</li>
+          </ol>
+        </article>
+
+        <article class="card card--wide">
+          <h3>Simulation Checklist</h3>
+          <p>
+            Double-click each switch to toggle logic levels during simulation. The
+            AND gate LED should only light when both switches are high, whereas the
+            OR gate LED lights when either switch is high. Confirm behavior with
+            the interactive truth-table below.
+          </p>
+          <div id="simulator" class="simulator" aria-live="polite"></div>
+        </article>
+
+        <article class="card">
+          <h3>Power &amp; Signal Integrity Tips</h3>
+          <ul class="tips">
+            <li>Use a single VCC rail labelled <strong>VCC</strong> and fan it out to the ICs.</li>
+            <li>Keep input traces short and avoid crossings to maintain clarity.</li>
+            <li>Enable <strong>Snap to Grid</strong> for clean alignment and easier debugging.</li>
+            <li>Color-code power (red) and ground (blue/black) for quick visuals.</li>
+            <li>
+              Add labels such as <strong>AND_OUT</strong> and <strong>OR_OUT</strong> to track signals.
+            </li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Export &amp; Documentation</h3>
+          <p>
+            Once verified, export the schematic as PDF via <strong>Output &gt;
+            Export Graphics</strong>. Include annotated truth tables and simulation
+            screenshots for lab reports or coursework submissions.
+          </p>
+          <p>
+            For PCB follow-up, switch to <strong>PCB Layout</strong>, import the netlist,
+            and map each gate to its footprint (e.g., DIP-14 package).
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>&copy; 2024 Logic Lab Toolkit</span>
+      <span>Designed for quick Proteus 8 experimentation.</span>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
